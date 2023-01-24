@@ -24,6 +24,12 @@ const app = express();
 // **** MIDDLEWARE ****
 app.use(cors());
 
+// DON'T FORGET TO USE THIS!!! - MIDDLEWARE TO PARSE JSON DATA FROM THE REQUEST.BODY - USE BEFORE ENDPOINTS
+app.use(express.json());
+
+
+
+// define PORT validate env is working
 const PORT = process.env.PORT || 3002;
 
 app.get('/test', (request, response) => {
@@ -47,6 +53,45 @@ async function getBooks(request, response, next) {
     next(error);
   }
 }
+
+// ***** ENDPOINT TO DELETE A BOOK *****
+// we must have a path parameter
+// we will use a variable to capture the ID
+// to create the variable we use the ':' and add a variable name
+
+app.delete('/books/:bookID', deleteBooks);
+
+async function deleteBooks(request, response, next) {
+  try {
+
+    let id = request.params.bookID;
+
+    await Book.findByIdAndDelete(id);
+
+    response.status(200).send('Book Deleted');
+  } catch (error) {
+    console.log(error.message);
+    next(error);
+  }
+}
+
+// ****** ENDPOINT TO ADD A BOOK ******
+
+app.post('/books', postBook);
+
+async function postBook(request,response,next) {
+  try {
+
+    let createdBook = await Book.create(request.body);
+
+    response.status(200).send(createdBook);
+  } catch (error) {
+    console.log(error.message);
+    next(error);
+  }
+}
+
+
 
 
 app.get('*', (request, response) => {
