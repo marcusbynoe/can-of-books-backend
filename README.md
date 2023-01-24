@@ -73,6 +73,6 @@ Estimate of time needed to complete: 2 and half hours
 
 Start time: 3pm (MST)
 
-Finish time: 
+Finish time: 5:48pm (MST)
 
-Actual time needed to complete: 
+Actual time needed to complete: 2 hours and 48 minutes
