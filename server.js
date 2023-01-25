@@ -79,7 +79,7 @@ async function deleteBooks(request, response, next) {
 
 app.post('/books', postBook);
 
-async function postBook(request,response,next) {
+async function postBook(request, response, next) {
   try {
 
     let createdBook = await Book.create(request.body);
@@ -91,7 +91,23 @@ async function postBook(request,response,next) {
   }
 }
 
+// ***** ENDPOINT TO UPDATE/PUT A BOOK ******
+app.put('/books/:bookID', updateBook);
 
+async function updateBook(request, response, next) {
+  try {
+    let id = request.params.bookID;
+    let data = request.body;
+
+    const updatedBook = await Book.findByIdAndUpdate(id, data, { new: true, overwrite: true });
+
+    response.status(200).send(updatedBook);
+
+  } catch (error) {
+    console.log(error.message);
+    next(error);
+  }
+}
 
 
 app.get('*', (request, response) => {
