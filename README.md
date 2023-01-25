@@ -76,3 +76,15 @@ Start time: 3pm (MST)
 Finish time: 5:48pm (MST)
 
 Actual time needed to complete: 2 hours and 48 minutes
+
+## Lab 12
+
+Name of feature: POST and DELETE
+
+Estimate of time needed to complete: 2 and half hours
+
+Start time: 3:30pm (MST)
+
+Finish time: 8:04 (MST)
+
+Actual time needed to complete: About 3 hours and 40-ish mins
